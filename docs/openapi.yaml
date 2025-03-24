@@ -1,0 +1,90 @@
+openapi: 3.0.0
+servers:
+  - description: Local server
+    url: http://localhost:8075
+info:
+  description: This is a simple API
+  version: "1.0.0"
+  title: Simple Inventory API
+paths:
+  /classrooms/{id}:
+    get:
+      summary: receive classroom by id
+      operationId: findById
+      description: Returns a single classroom
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Classroom received
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ClassroomDto"
+        "404":
+          description: Classroom not found
+    delete:
+      operationId: deleteById
+      description: Deletes a single classroom
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: Deleted
+    put:
+      operationId: updateById
+      description: Updates a single classroom
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClassroomDto"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ClassroomDto"
+  /classrooms:
+    post:
+      operationId: create
+      description: Creates a single classroom
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClassroomDto"
+      responses:
+        '201':
+          description: item created
+components:
+  schemas:
+    ClassroomDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        free:
+          type: boolean
