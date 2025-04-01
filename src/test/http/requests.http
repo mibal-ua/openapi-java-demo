@@ -1,0 +1,27 @@
+###
+GET http://localhost:8090/users
+
+###
+GET http://localhost:8090/users/1
+
+###
+POST http://localhost:8090/users
+Content-Type: application/json
+
+{
+    "name": "John Doe"
+}
+
+###
+PUT http://localhost:8090/users/1
+Content-Type: application/json
+
+{
+    "name": "Mykhailo Balakhon123"
+}
+
+###
+DELETE http://localhost:8090/users/7
+
+###
+GET http://localhost:8090/swagger-ui.html
