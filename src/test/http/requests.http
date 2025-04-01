@@ -23,5 +23,9 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8090/users/7
 
+
 ###
 GET http://localhost:8090/swagger-ui.html
+
+###
+GET http://localhost:8090/v3/api-docs
