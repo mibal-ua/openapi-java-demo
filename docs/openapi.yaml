@@ -25,10 +25,7 @@ paths:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                name:
-                  type: string
+              $ref: '#/components/schemas/User'
       responses:
         '201':
           description: User created
